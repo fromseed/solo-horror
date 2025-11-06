@@ -1,0 +1,23 @@
+# Godot-specific
+.import/
+.export/
+.cache/
+mono/
+*.translation
+
+# Godot editor folder (Godot 4+)
+.godot/
+
+# Android export build folder
+/android/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.exe
+*.pck
+*.apk
+*.aab
+*.zip

@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqipknfrifnvf"]
+
+[ext_resource type="Script" uid="uid://cy5mfpl6ghc67" path="res://props/candle.gd" id="1_8itb1"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w35qa"]
+custom_aabb = AABB(0, -0.1, 0, 1, 1, 1)
+top_radius = 0.04
+bottom_radius = 0.05
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w35qa"]
+shading_mode = 0
+albedo_color = Color(0.654902, 0.5529412, 0.42352942, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_w35qa"]
+radius = 0.02
+height = 0.13
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00cvw"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.81960785, 0.5568628, 0.16470589, 0.41568628)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8itb1"]
+custom_aabb = AABB(0, 0, 0, 0.2, 0.6, 0.5)
+radius = 0.02
+height = 0.13
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8itb1"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.9137255, 0.75686276, 0.14901961, 0.36862746)
+
+[node name="Candle" type="Node3D"]
+script = ExtResource("1_8itb1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06263645, 0.16755347, 0)
+light_color = Color(1, 0.69803923, 0.41960785, 1)
+light_energy = 8000.0
+shadow_enabled = true
+shadow_opacity = 0.8
+omni_range = 10.0
+omni_attenuation = 1.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_w35qa")
+skeleton = NodePath("../OmniLight3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_w35qa")
+
+[node name="Flame" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13443209, 0)
+mesh = SubResource("SphereMesh_w35qa")
+surface_material_override/0 = SubResource("StandardMaterial3D_00cvw")
+
+[node name="InnerFlame" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10815336, 0)
+mesh = SubResource("SphereMesh_8itb1")
+surface_material_override/0 = SubResource("StandardMaterial3D_8itb1")

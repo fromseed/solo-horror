@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b47pmhco6mm4h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uprxo"]
+size = Vector3(2, 3, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uprxo"]
+albedo_color = Color(0.3177771, 0.24208918, 0.18313313, 1)
+metallic_specular = 0.0
+roughness = 0.4
+emission_energy_multiplier = 0.5
+clearcoat = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_clf4v"]
+size = Vector3(2, 3, 0.5)
+
+[node name="Wall_Piece" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_uprxo")
+surface_material_override/0 = SubResource("StandardMaterial3D_uprxo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_clf4v")

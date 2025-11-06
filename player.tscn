@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqa4jcjuhtplp"]
+
+[ext_resource type="Script" uid="uid://b3ber75bn37nu" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://cqipknfrifnvf" path="res://props/candle.tscn" id="2_onrkg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+height = 1.2
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_onrkg"]
+frustum_focal_length = 20.0
+exposure_aperture = 5.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+attributes = SubResource("CameraAttributesPhysical_onrkg")
+
+[node name="Hand" type="Node3D" parent="Pivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15493321, -0.25228846, -0.50462687)
+
+[node name="Candle" parent="Pivot/Camera3D/Hand" instance=ExtResource("2_onrkg")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0920966, 0, 0)
+base_energy = 1000.0
