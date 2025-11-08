@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cqipknfrifnvf" path="res://props/candle.tscn" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
-height = 1.2
+radius = 0.62
+height = 1.24
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_onrkg"]
 frustum_focal_length = 20.0
@@ -27,4 +28,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15493321, -0.25228846, -0.5
 
 [node name="Candle" parent="Pivot/Camera3D/Hand" instance=ExtResource("2_onrkg")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0920966, 0, 0)
-base_energy = 1000.0

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv8aercv80aj2"]
+
+[ext_resource type="Script" uid="uid://20y4750gvmvp" path="res://props/tape.gd" id="1_cjb0h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_81sxm"]
+size = Vector3(0.1, 0.02, 0.06)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81sxm"]
+albedo_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_81sxm"]
+size = Vector3(0.105, 0.02, 0.08)
+
+[node name="Tape" type="Node3D"]
+script = ExtResource("1_cjb0h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_81sxm")
+surface_material_override/0 = SubResource("StandardMaterial3D_81sxm")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_81sxm")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_intensity_lumens = 250.0
+light_color = Color(0.9254902, 0.9137255, 0.69411767, 1)
+light_energy = 2.0
+omni_range = 2.0
+omni_attenuation = 2.0

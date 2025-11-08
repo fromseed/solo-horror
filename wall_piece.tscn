@@ -4,9 +4,9 @@
 size = Vector3(2, 3, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uprxo"]
-albedo_color = Color(0.3177771, 0.24208918, 0.18313313, 1)
+albedo_color = Color(0.40432563, 0.29330546, 0.17416552, 1)
 metallic_specular = 0.0
-roughness = 0.4
+roughness = 0.3
 emission_energy_multiplier = 0.5
 clearcoat = 0.0
 

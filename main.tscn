@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsm5via72scrm"]
+[gd_scene load_steps=14 format=3 uid="uid://dsm5via72scrm"]
 
+[ext_resource type="Script" uid="uid://dvc3jyuwnc0yi" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bqa4jcjuhtplp" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b47pmhco6mm4h" path="res://wall_piece.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bv8aercv80aj2" path="res://props/Tape.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dlupw6t6ut64c" path="res://props/Door.tscn" id="5_lquwl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
 size = Vector3(20, 0.2, 20)
@@ -35,9 +38,11 @@ volumetric_fog_albedo = Color(0.47788018, 0.47788012, 0.47788012, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
-albedo_color = Color(0.24774784, 0.17173317, 0.12523663, 1)
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.3
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_1bvp3")
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -66,7 +71,7 @@ light_color = Color(0.97465414, 0.667482, 0.3182025, 1)
 light_energy = 1000.0
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.76727045, 6)
+transform = Transform3D(0.47338113, 0, 0.8808577, 0, 1, 0, -0.8808577, 0, 0.47338113, 5, 0.76727045, 6)
 
 [node name="Wall_Piece" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
@@ -130,3 +135,27 @@ camera_attributes = SubResource("CameraAttributesPhysical_0xm2m")
 transform = Transform3D(1, 0, 0, 0, 1.8130494, 0, 0, 0, 1.6987293, 2, 1.0457335, 3.8785343)
 mesh = SubResource("BoxMesh_0xm2m")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
+
+[node name="Tape" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9574547, 0.035796642, 5)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PickupLabel" type="Label" parent="HUD"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -11.5
+offset_right = 57.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.27484837, 0.2813866, 0.02027556, 1)
+text = "Tape Collected"
+
+[node name="Door" parent="." instance=ExtResource("5_lquwl")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.514164, 0, 5.4782743)
